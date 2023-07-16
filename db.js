@@ -1,14 +1,9 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize(
-  "your-database-name",
-  "your-username",
-  "your-password",
-  {
-    host: "localhost",
-    dialect: "postgres",
-  }
-);
+const sequelize = new Sequelize("postgres", "postgres", "root", {
+  host: "localhost",
+  dialect: "postgres",
+});
 
 // Test the database connection
 sequelize
