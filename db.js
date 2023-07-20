@@ -1,10 +1,13 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize("postgres", "postgres", "root", {
-  host: "localhost",
-  dialect: "postgres",
-
-  logging: false, // Disable query logging
+const sequelize = new Sequelize(process.env.POSTGRES_URL, {
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // This option is required for some PostgreSQL setups (e.g., Heroku)
+    },
+  },
+  logging: false, // Disable logging SQL queries (optional)
 });
 
 // Test the database connection
