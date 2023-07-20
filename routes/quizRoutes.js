@@ -8,7 +8,7 @@ const { authorizeUser } = require("../middlewares/auth");
 router.post("/", authorizeUser, QuizController.createQuiz);
 
 // Get all quizzes
-router.get("/", authorizeUser, QuizController.getAllQuizzes);
+router.get("/", QuizController.getAllQuizzes);
 
 // Get a specific quiz by ID
 router.get("/:quizId", authorizeUser, QuizController.getQuizById);
